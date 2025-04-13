@@ -1,0 +1,769 @@
+/* --------------- Variable ---------------- */
+
+/* couleur */
+:root {
+    --couleur-principale: #73168B;
+    --couleur-secondaire: #9F2CBF;
+    --couleur-complementaire: #C04BF2;
+    --couleur-alternatif: #28125A;
+    --couleur-tertiaire: white;
+}
+
+/* typographie */
+:root{
+    --font-principal : Arial, Helvetica, sans-serif;
+    --taille-font-normal: 20px;
+    --taille-font-responsive: 10px;
+}
+
+/* espacement */
+:root{
+    --margin-prime: 75px;
+    --margin-seconde: 60px;
+    --margin-troisieme: 30px;
+    --margin-quatrieme: 20px;
+    --margin-prime-responsive: 37px;
+    --margin-seconde-responsive: 30px;
+    --margin-troisieme-responsive: 15px;
+    --margin-quatrieme-responsive: 10px;
+    --margin-cinquieme-responsive: 5px;
+}
+
+/* icone */
+:root{
+    --taille-icone1-normal: 40px;
+    --taille-icone2-normal: 25px;
+    --taille-icone3-normal: 70px;
+    --taille-icone1-responsive: 20px;
+    --taille-icone2-responsive: 12px;
+    --taille-icone3-responsive: 35px;
+}
+
+/* smooth scroll */
+:root {
+    scroll-behavior: smooth;
+}
+
+/* ------------Caractéristique général du body---------------- */
+body{
+    display: flex;
+    flex-direction: column;
+};
+
+h1 {
+    font-size: 40px;
+};
+
+h2 {
+    font-size: 30px;
+};
+
+
+h3 {
+    font-size: 25px;
+};
+
+h4{
+    font-size: 20px;
+};
+
+h5{
+    font-size: 15px;
+}
+/* ----------------------------------------------header--------------------------------------- */
+
+/* Header */
+header {
+    display: flex;
+    width: 100vw;
+    height: 656px;
+    flex-direction: column;
+    position: relative; 
+    top: 0vw;
+    left: 0vw;
+    margin-bottom: var(--margin-quatrieme);
+
+}
+.navmenu {
+    display: flex;
+    background-color: var(--couleur-alternatif); 
+    position: fixed; 
+    justify-content: center;
+    align-items: center;
+    width: 100vw; 
+    height: 70px;
+    z-index: 10;
+    box-shadow: 6px 6px 6px 6px #28125ac2;
+    top: 0;
+    left: -1vw;
+}
+
+
+
+.navmenu a{
+    color: var(--couleur-tertiaire);
+    font-size: 25px;
+    padding: var(--margin-troisieme);
+    font-family: var(--font-principal);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+/* option survolé */
+a:hover {
+    text-decoration: underline;
+}
+.navmenu a.active {
+    text-decoration: underline;
+}
+
+
+/* Couverture */
+.couverture {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('image0_0Copie.jpg');
+    background-size: cover;
+    background-position: center;
+    margin-top: 63px;
+    width: 101vw;
+    height: 586px;
+    box-shadow: 3px 3px 3px 3px #28125ac2;
+    left: -1vw;
+}
+
+header .couverture .tabCouverture{
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-items: center;
+
+
+}
+.modifPhotoProfile img
+{
+    width: 275px;
+    height: 275px;
+    border: 10px solid var(--couleur-tertiaire);
+    border-radius: 50%;
+    margin-right: var(--margin-prime);
+}
+
+.couleurBlancTitre{
+    display: flex;
+    flex-direction: column;
+    width: 552px;
+    height: 183px;
+   margin-left: var(--margin-prime);
+}
+#couleurTitre{
+    color: var(--couleur-tertiaire);
+    font-family: var(--font-principal);
+}
+
+
+/* ------------------------------caractéristique global article----------------------------- */
+
+/* constitution global */
+article{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--margin-prime);
+}
+
+section{
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section #active {
+    margin-top: 116px;
+}
+
+/* text global */
+p{
+    color: var(--couleur-principale);
+    font-family: var(--font-principal);
+    font-size: var(--taille-font-normal);
+    margin: 0;
+}
+
+#souligne{
+    font-family: var(--font-principal);
+    font-size: 40px;
+    color: var(--couleur-principale);
+    text-decoration: underline;
+    text-decoration-thickness: 6px; /* Épaisseur du soulignement */
+    text-underline-offset: 9px; /* Distance entre le soulignement et le texte */
+    text-decoration-color: var(--couleur-principale); /* Couleur du soulignement */
+}
+
+/* titre + icone global de chaque section */
+.Titre{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    margin-top: var(--margin-prime);
+    margin-bottom: var(--margin-troisieme);
+}
+
+.Titre:hover {
+    opacity: 0.7;
+}
+
+/* icones global */
+
+#tailleIcon1{
+    width: var(--taille-icone1-normal);
+    height: var(--taille-icone1-normal);
+}
+
+#tailleIcon2{
+    width: var(--taille-icone2-normal);
+    height: var(--taille-icone2-normal);
+}
+
+/* sous-titre + icone dans les span */
+.sousTitre{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    
+}
+
+/* conteneur avec les box shadow */
+#boxShadow {
+    border-radius: 10px;
+    box-shadow: 0px 30px 30px #74168b27,
+                0px -30px 30px #74168b27,
+                30px 0px 30px #74168b27,
+                -30px 0px 30px #74168b27;
+}
+
+/* btn */
+.btn {
+    width: 174px;
+    height: 29px;
+    color: var(--couleur-tertiaire);
+    border: 1px solid var(--couleur-principale);
+    background-color: var(--couleur-principale);
+    border-radius: 50px;
+    font-size: 20px;
+}
+.btn:hover {
+    opacity: 0.7;
+}
+
+
+/* -------------------------------section infoPersonnel------------------------------------ */
+
+/* containeur principal */
+.infoPersonnel{
+    display: flex;
+    width: 1048px;
+    height: 264px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+/* contenu */
+.infoPersonnelContenu p{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* ------------------------section à propos------------------------------------ */
+
+/* conteneur principal à propos*/
+.APropos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 954px;
+    
+     height: 246px; 
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#espacementTitre {
+    margin-top: 70px;
+}
+
+/* contenu text à propos*/
+
+.AProposContenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 954px;
+    height: 96px;
+
+}
+
+/* -------------------------section diplome et formation----------------------------- */
+/* conteneur principal diplome+formation */
+section .DiplomesFormations{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 989px;
+    height: 611px;
+    
+}
+/* diplome conteneur principal / formation conteneur principal */
+main .containerDiplomeFormation{
+    display: flex;
+    align-items: start;
+    width: 924px;
+    height: 201px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--margin-troisieme);
+}
+
+/* sous titre diplome et compétence */
+#sousTitreDiplomeFormation{
+    margin-bottom: var(--margin-quatrieme);
+}
+
+/* conteneur sous-titre et contenu diplome / conteneur sous-titre et contenu formation */
+.sousTitreContenuDiplomeFormation{
+    width: 864px;
+    height: 141px;
+    margin: var(--margin-troisieme);
+}
+
+/* contenu diplome / contenu formation */
+.contenuDiplomeFormation{
+    width: 851px;
+    height: 96px;
+}
+
+/* -----------------------------section xp et compétences-------------------------------- */
+/* conteneur principal expérience compétence */
+section .XpCompetence{
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    height: 1145px;
+    
+}
+
+/* -----------------------------partie expérience-------------------------------- */
+
+/* conteneur principal expérences */
+.conteneurPrincipalXp{
+    display: flex;
+    flex-direction: column;
+    width: 749px;
+    height: 535px;
+    margin-bottom: var(--margin-troisieme);
+}
+
+/* espacement du texte expérience */
+span .experience #espacementXp{
+    margin-bottom: var(--margin-troisieme);
+}
+
+/* conteneur conseiller client */
+span .experience .conteneurConseillerClient {
+    display: flex;
+    flex-direction: column;
+    width: 552px;
+    height: 128px;
+    margin-top: 0;
+    margin-bottom: var(--margin-troisieme);
+}
+/* icon + contenu conseiller client */
+.iconContenuConseiller{
+    width: 493px;
+    height: 73px;
+    margin: var(--margin-troisieme);
+}
+
+/* conteneur domaine du web */
+.conteneurDomaineWeb{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 749px;
+    height: 323px;
+    margin-bottom: var(--margin-troisieme);
+}
+
+/* icon + contenu domaine web */
+.iconContenuDomaineWeb{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: var(--margin-troisieme);
+}
+
+/* -----------------------------partie compétence-------------------------------- */
+
+/* conteneur principal compétence */
+main .conteneurPrincipalCompétence {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 800px;
+    height: 420px;
+    margin-bottom: var(--margin-troisieme);
+}
+
+/* espacement texte compétence */
+#compétence{
+    margin-bottom: var(--margin-troisieme);
+}
+
+/* ------------langage de programmation / framework / logiciel / langue------------- */
+
+/* conteneur langage de programmation / framework / logiciel */
+.conteneurCodeFrameworkLogiciel {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    width: 800px;
+    height: 366px;
+}
+
+/* conteneur langage de programmation / framework / logiciel avec box shadow individuel */
+.containerCode{
+    display: flex;
+    flex-direction: column;
+    width: 362px;
+    height: 168px;
+    margin-bottom: var(--margin-troisieme);
+}
+
+.containerMarginRight{
+    margin-right: var(--margin-troisieme);
+}
+
+.containerMarginLeft {
+    margin-left: var(--margin-troisieme);
+}
+
+.containerCode .conteneurTexteIconeTexte{
+    margin-top: var(--margin-troisieme);
+    margin-left: var(--margin-troisieme);
+}
+
+
+
+/* conteneur code et text */
+.conteneurCodeText{
+    display: flex;
+    flex-direction: row;
+}
+
+/* code icone langage programmation / framework / logiciel */
+.iconTextCode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 64px;
+    margin: var(--margin-quatrieme);
+}
+
+.iconTextCode #tailleIcon1:hover {
+    width: 60px;
+    height: 60px;
+}
+#codeHtml{
+    width: 57px;
+}
+#codeJs{
+    width: 98px;
+}
+#codeCSS{
+    width: 41px;
+}
+#bootstrapCode{
+    width: 94px;
+}
+#tailwindCode{
+    width: 123px;
+}
+
+/* partie langue */
+.contenuLangue{
+    margin-left: var(--margin-quatrieme);
+}
+.contenuLangue p{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+#ajustementPositionIconText {
+    width: 295px;
+    height: 72px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+/* ------------------------------------------section portfolio-------------------------------------- */
+/* conteneur principal portfolio */
+section .portfolio{
+    display: flex;
+    flex-direction: column;
+    width: 908px;
+    height: 628px; 
+    align-items: center;
+
+    
+}
+
+/* conteneur portfolio */
+.containerPortfolio {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 387px;
+    margin: var(--margin-troisieme);
+}
+
+/* conteneur des 3 portfolios */
+.totalPortfolio {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 880px;
+    height: 388px;
+    margin-bottom: var(--margin-troisieme);
+}
+
+/* conteneur image text */
+.containerPortfolio .conteneurImageTextPorfolio {
+    width: 213px;
+    height: 347px;
+    margin: var(--margin-quatrieme);
+}
+
+/* ajustement image */
+.conteneurImageTextPorfolio .ajustementImagePortfolio {
+    width: 210px;
+    height: 146px;
+    margin-bottom: var(--margin-quatrieme);
+}
+
+/* ---------------------------------------------section téléchargement--------------------------------------------- */
+/* conteneur principale */
+section .telechargement{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 478px;
+    height: 182px;
+}
+
+/* partie texte et btn téléchargement */
+span .TelechargeBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+span .TelechargeBtn p{
+    margin-right: var(--margin-prime);
+}
+
+/* -------------------------------------------section contact------------------------------------------------------------ */
+/* conteneur principal */
+section .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 1004px;
+    height: 319px;
+}
+/* espacement text contact */
+.contact p {
+    margin-bottom: var(--margin-troisieme);
+}
+.sousTitre p {
+    margin-top: 5px;
+    margin-left: 2px;
+}
+
+/* conteneur appel whatsapp linkedin mail */
+.conteneurAppelWhatsappInMail {
+    display: flex;
+    flex-direction: column;
+    width: 1004px;
+    height: 115px;
+}
+
+/* conteneur appel linkedin */
+.conteneurAppelLinkedin {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 43px;
+    margin-bottom: var(--margin-troisieme);
+    
+}
+
+/* conteneur whatsapp mail */
+.conteneurWhatsappMail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 43px; 
+}
+
+
+/* sous-titre + icone dans les span */
+.conteneurAppel {
+    width: 255px;
+    height: 40px;
+    margin-right: var(--margin-prime);
+}
+.conteneurAppel:hover{
+    height: 60px;
+}
+.conteneurLinkedin {
+    width: 509px;
+    height: 40px;
+}
+.conteneurLinkedin:hover {
+    height: 60px;
+}
+
+.conteneurWhatsapp {
+    width: 307px;
+    height: 40px;
+    margin-right: var(--margin-prime);
+}
+.conteneurWhatsapp:hover{
+    height: 60px;
+}
+.conteneurMail {
+    width: 603px;
+    height: 40px;
+    margin-left: 30px;
+}
+.conteneurMail:hover {
+    height: 60px;
+}
+
+.conteneurAppelWhatsappInMail .sousTitre p {
+    font-size: 30px;
+}
+/* -------------------------------------- flèche vers le haut------------------------------------------ */
+.scroll-top {
+    position: fixed;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    right: 20px;
+    bottom: -15px;
+    z-index: 99999;
+    color: var(--couleur-principale);
+    background-color: var(--couleur-principale);
+    width: var(--taille-icone3-normal);
+    height: var(--taille-icone3-normal);
+    border-radius: 10px;
+    transition: all 0.4s;
+    opacity: 0.7;
+  }
+  
+  .scroll-top p {
+    font-size: var(--taille-icone3-normal);
+    color: white;
+    transform: rotate(-90deg);
+  }
+  
+  .scroll-top:hover {
+    opacity: 0.98;
+  }
+  
+  .scroll-top.active {
+    visibility: visible;
+    bottom: var(--taille-icone3-normal);
+  }
+
+/* -----------------------------------------------footer ------------------------------------------------------- */
+/* conteneur principal footer */
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 296px;
+    width: 100vw;
+    background-color: var(--couleur-alternatif);
+    margin-left: -0.5vw;
+
+}
+/* conteneur copyright icon text */
+.conteneurCopyrightIconText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: var(--margin-seconde);
+    width: 853px;
+    height: 176px;
+}
+/* couleur text */
+.conteneurCopyrightIconText p{
+    color: white;
+    font-size: 30px;
+}
+
+.copyrightFooter, .iconFooter, .textFooter {
+    display: flex;
+    flex-direction: row;
+}
+/* conteneur icone */
+.iconFooter #tailleIcon1{
+    margin: var(--margin-troisieme);
+}
+.iconFooter #tailleIcon1:hover {
+    opacity: 0.5;
+}
+
+/* ----------------------------animation du body lorsque le souris scroll---------------------------- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+  }
+
+  .animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .activeClass {
+    margin-top: 116px;
+  }
