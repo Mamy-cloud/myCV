@@ -137,3 +137,50 @@ function navmenuScrollspy() {
 window.addEventListener('load', navmenuScrollspy);
 document.addEventListener('scroll', navmenuScrollspy);
 
+//-------------------menu toggle-----------------------------------------------------------
+
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleMenu = document.querySelector(".toggleMenu");
+  const navMenu = document.querySelector(".navmenu");
+  const menuLinks = document.querySelectorAll(".navmenu a");
+  const retour = document.querySelector(".navmenu p")
+
+
+// Afficher ou masquer le menu lorsque l'utilisateur clique sur "Menu"
+  toggleMenu.addEventListener("click", function (event) {
+    event.stopPropagation();
+    if (navMenu.classList.contains("visible")) {
+      navMenu.classList.remove("visible");
+      navMenu.classList.add("hidden"); // Ajoute la classe "hidden" pour l'animation de disparition
+    } else {
+      navMenu.classList.remove("hidden");
+      navMenu.classList.add("visible"); // Ajoute la classe "visible" pour l'animation d'apparition
+    }
+  });
+
+// Masquer le menu lorsque l'utilisateur clique sur un lien
+  menuLinks.forEach(link => {
+    link.addEventListener("click", function () {
+      navMenu.classList.remove("visible");
+      navMenu.classList.add("hidden"); // Cache le menu après avoir sélectionné une option
+    });
+  });
+
+// Masquer le menu lorsque l'utilisateur clique en dehors de celui-ci
+  document.addEventListener("click", function (event) {
+    if (!navMenu.contains(event.target) && !toggleMenu.contains(event.target)) {
+      navMenu.classList.remove("visible");
+      navMenu.classList.add("hidden"); // Cache le menu si l'utilisateur clique en dehors
+    }
+  });
+
+  if(retour){
+    retour.addEventListener("click", function(){
+      navMenu.classList.remove("visible");
+      navMenu.classList.add("hidden"); // Cache le menu si l'utilisateur clique en dehors
+    })
+  };
+});
+
+//Masque me contenu lorsque l'utilisateur clique sur retour
+

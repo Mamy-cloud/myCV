@@ -1,0 +1,85 @@
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    .navmenu {
+        display: none;
+        flex-direction: column;
+        align-items: start;
+        color: var(--couleur-alternatif);
+        height: 100%;
+        width: 50%;
+        opacity: 0; 
+        transform: translateY(-10px); 
+        transition: opacity 0.5s ease-in, transform 0.5s ease-in; 
+        overflow: auto;
+    }
+
+    .navmenu p{
+        display: block;
+        font-size: 25px;
+        color: var(--couleur-tertiaire);
+        cursor: pointer;
+        margin: var(--margin-quatrieme);
+        padding-left: var(--margin-troisieme);
+    }
+    .navmenu p:hover {
+        text-decoration: underline;
+    }
+    .navmenu.visible {
+        display: flex; 
+        opacity: 1;
+        transform: translateY(0); 
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+
+    .navmenu a{
+        padding: 5px;
+        margin: var(--margin-quatrieme);
+        padding-left: var(--margin-troisieme);
+    }
+
+    .rectangleToggle {
+        position: fixed;
+        z-index: 99;
+        display: flex;
+        width: 105vw;
+    }
+
+    .rectangleToggle .toggleMenu{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    /* -----------------------animation navmenu en responsive--------------------- */
+@keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px); /* Le menu commence légèrement au-dessus */
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0); /* Le menu atteint sa position normale */
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: translateX(0); /* Le menu est visible à sa position normale */
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-20px); /* Le menu disparaît en glissant vers le haut */
+    }
+  }
+  
+  .navmenu.visible {
+    display: flex; /* Affiche le menu lorsqu'il est visible */
+    animation: slideIn 0.5s ease forwards; /* Animation pour l'apparition */
+  }
+  
+  .navmenu.hidden {
+    animation: slideOut 0.9s ease-in forwards; /* Animation pour la disparition */
+  }
+
+}

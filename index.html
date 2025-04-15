@@ -8,24 +8,19 @@
 </head>
 <body>
 
-
     <header>
 
-        <!-- navBar -->
-        <!-- <div class="navBarRectangle">
-            <div id="listeOption">
-                <option value="Accueil" selected> Accueil</option>
-                <option value="A propos">A propos</option>
-                <option value="Diplômes & formations">Diplômes & formations</option>
-                <option value="Expériences & compétences">Expériences & compétences</option>
-                <option value="Portfolio">Portfolio</option>
-                <option value="Téléchargement">Téléchargement</option>
-                <option value="Contact">Contact</option>
+        <div class="rectangleToggle">
+            <div class="toggleMenu">
+                <div class="toggleConteneur">
+                    <div id="ligneToggle"></div>
+                </div>
+                <div id="menuText">Menu</div>
             </div>
-            
-        </div> -->
+        </div>
 
         <nav class="navmenu">
+                <p> < Retour</p> 
                 <a href="#accueil" class="active">Accueil</a>
                 <a href="#apropos">A propos</a>
                 <a href="#diplome">Diplome & formation</a>
@@ -33,20 +28,17 @@
                 <a href="#portfolio">Portfolio</a>
                 <a href="#telechargement">Téléchargement</a>
                 <a href="#contactSection">Contact</a>
+
         </nav>
 
         <!-- couverture -->
         <div class="couverture" id="accueil">
 
             <main class="tabCouverture">
-                <div class="modifPhotoProfile">
                     <img  src="src/img/PhotoCaptureModif.jpg" alt="photoProfile">
-                    
-                </div>
-    
                 <div class="couleurBlancTitre">
-                    <h1 id="couleurTitre">Je m'appelle Mamy Tantely</h1><br>
-                    <h1 id="couleurTitre"><span class="typed" data-typed-items="Développeur junior, UX / UI designer junior"></span></h1>
+                    <h1>Je m'appelle Mamy Tantely</h1><br>
+                    <h1><span class="typed" data-typed-items="Développeur junior, UX / UI designer junior"></span></h1>
                 </div>
             </main>
         </div>
@@ -66,8 +58,10 @@
                 <p>NOM : ANDRIAMIALISOA</p>
                 <p>PRENOM : Mamy Tantely</p>
                 <p>AGE : 26 ans</p>
-                <p>ADRESSE  : Lot IVN 41 ankaditapaka Avaratra. Ville : Tananarive. Pays : Madagascasr</p>
-                <p>MAIL : mamycompteprofessionnel@gmail.com. N° mobile : 038 89 239 16</p>
+                <p>ADRESSE  : Lot IVN 41 ankaditapaka Avaratra.</p>
+                <p> Ville : Tananarive. Pays : Madagascasr</p>
+                <p>MAIL : mamycompteprofessionnel@gmail.com. </p>
+                <p>N° mobile : 038 89 239 16</p>
                  
                 
                 <br>
@@ -135,11 +129,11 @@
                     <!-- fin sous-titre + icone dans les span + sous titre diplome et compétence -->
                     
                     <!-- contenu diplome -->
-                    <div class="contenuDiplome">
+                    <div class="contenuDiplomeFormation">
                         <p>Baccalauréat 2018 : j'ai eu mon bacc série A2 au lycée Jules Ferry.
-                        </p><br>
+                        </p>
                         <p>Licence (2019-2021) : j'ai eu ma licence 2 au CNTEMAD dans la filière commerce.
-                        </p><br>
+                        </p>
                         <p>Licence 2024: j'étudie l'informatique au CNTEMAD et j'ai la licence 1ere année.
                         </p>
                     </div>
@@ -232,13 +226,13 @@
                             <!-- contenu -->
                             <div>
                                 <p>-Projet : CV en ligne</p>
-                                <p>-Poste occupé : UX / UI Designer, développeur web, intégrateur web.</p> 
+                                <p id="espacementDomaineWeb">-Poste occupé : UX / UI Designer, développeur web, intégrateur web.</p> 
                                 <br>
                                 <p>-Projet : AudiZéro</p>
-                                <p>-Poste occupé : UX / UI Designer, développeur web, intégrateur web.</p>
+                                <p id="espacementDomaineWeb">-Poste occupé : UX / UI Designer, développeur web, intégrateur web.</p>
                                 <br>
-                                <p>-Projet : Foot-score</p>
-                                <p>-Poste occupé : UX / UI Designer, développeur web, intégrateur web.</p>
+                                <p >-Projet : Foot-score</p>
+                                <p id="espacementDomaineWeb">-Poste occupé : UX / UI Designer, développeur web, intégrateur web.</p>
                                 <br>
                                 <p>Pour en savoir plus, je vous invite à aller dans la section portfolio.</p>
                             </div>
@@ -545,7 +539,8 @@
 
                 <!-- conteneur text footer -->
                 <div class="textFooter">
-                    <p>Designed by Mamy Tantely Distributed by ANDRIAMIALISOA</p>
+                    <p>Designed by Mamy Tantely </p>
+                    <p>Distributed by ANDRIAMIALISOA</p>
                 </div>
                 <!-- fin conteneur text footer -->
              </div>

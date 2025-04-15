@@ -1,3 +1,5 @@
+@import url('media-query.css');
+
 /* --------------- Variable ---------------- */
 
 /* couleur */
@@ -48,6 +50,7 @@
 body{
     display: flex;
     flex-direction: column;
+    margin: 0
 };
 
 h1 {
@@ -70,9 +73,18 @@ h4{
 h5{
     font-size: 15px;
 }
+@media (max-width: 1200px){
+    h1 {
+        font-size: 20px;
+    };
+    
+    h2 {
+        font-size: 15px;
+    };
+}
 /* ----------------------------------------------header--------------------------------------- */
 
-/* Header */
+/*---------------------------- Header------------------------------------ */
 header {
     display: flex;
     width: 100vw;
@@ -84,6 +96,13 @@ header {
     margin-bottom: var(--margin-quatrieme);
 
 }
+@media (max-width: 1000px){
+    header{
+        height: 347px;
+        margin-bottom: var(--margin-quatrieme-responsive);
+    }
+}
+/* -------------------------------navmenu----------------------------------------- */
 .navmenu {
     display: flex;
     background-color: var(--couleur-alternatif); 
@@ -98,12 +117,12 @@ header {
     left: -1vw;
 }
 
-
-
 .navmenu a{
+    display: flex;
+    flex-wrap: wrap;
     color: var(--couleur-tertiaire);
     font-size: 25px;
-    padding: var(--margin-troisieme);
+    margin: var(--margin-quatrieme);
     font-family: var(--font-principal);
     text-decoration: none;
     transition: background-color 0.3s ease;
@@ -117,8 +136,229 @@ a:hover {
     text-decoration: underline;
 }
 
+/* option retour pour le navmenu en mode responsive */
+.navmenu p{
+    display: none;
+}
 
-/* Couverture */
+/*--------------------------- toggle ------------------*/
+
+.rectangleToggle {
+    display: none;
+    background-color: var(--couleur-alternatif); 
+    position: fixed; 
+    justify-content: center;
+    align-items: center;
+    width: 100vw; 
+    height: 70px;
+    z-index: 10;
+    box-shadow: 6px 6px 6px 6px #28125ac2;
+    top: 0;
+    left: -1vw;
+
+}
+.toggleMenu {
+    display: none;
+    flex-direction: row;
+    position: fixed;
+    width: 100px;
+    height: 25px;
+    left: var(--margin-seconde-responsive);
+    top: var(--margin-seconde-responsive);
+    cursor: pointer;
+    z-index: 20;
+}
+
+.toggleConteneur {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: var(--margin-cinquieme-responsive);
+    border: 1px solid var(--couleur-tertiaire);
+}
+
+#ligneToggle {
+    width: 15px;
+    height: 1px;
+     position: absolute;    
+    background: var(--couleur-tertiaire);
+  }
+  
+  #ligneToggle::after,
+  #ligneToggle::before {
+    content: "";
+    width: 15px;
+    height: 1px;
+    background: var(--couleur-tertiaire);
+    position: absolute; 
+  }
+  
+  #ligneToggle::after {
+    top: -5px;
+  }
+  
+  #ligneToggle::before {
+    top: 6px;
+  }
+
+#menuText{
+    margin-top: 5px;
+    color: var(--couleur-tertiaire);
+    font-family: var(--font-principal);
+    font-size: 25px;
+}
+
+/* -------------------- navmenu responsive------------------------------------ */
+
+
+@media (max-width: 1200px){
+    .navmenu {
+        display: none;
+        flex-direction: column;
+        align-items: start;
+        color: var(--couleur-alternatif);
+        height: 100%;
+        width: 50%;
+        opacity: 0; 
+        transform: translateY(-10px); 
+        transition: opacity 0.5s ease-in, transform 0.5s ease-in; 
+        overflow: auto;
+    }
+
+    .navmenu p{
+        display: block;
+        font-size: 25px;
+        color: var(--couleur-tertiaire);
+        cursor: pointer;
+        margin: var(--margin-quatrieme);
+        padding-left: var(--margin-troisieme);
+    }
+    .navmenu p:hover {
+        text-decoration: underline;
+    }
+    .navmenu.visible {
+        display: flex; 
+        opacity: 1;
+        transform: translateY(0); 
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+
+    .navmenu a{
+        padding: 5px;
+        margin: var(--margin-quatrieme);
+        padding-left: var(--margin-troisieme);
+    }
+
+    .rectangleToggle {
+        position: fixed;
+        z-index: 99;
+        display: flex;
+        width: 105vw;
+    }
+
+    .rectangleToggle .toggleMenu{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    /* -----------------------animation navmenu en responsive--------------------- */
+@keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px); /* Le menu commence légèrement au-dessus */
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0); /* Le menu atteint sa position normale */
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: translateX(0); /* Le menu est visible à sa position normale */
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-20px); /* Le menu disparaît en glissant vers le haut */
+    }
+  }
+  
+  .navmenu.visible {
+    display: flex; /* Affiche le menu lorsqu'il est visible */
+    animation: slideIn 0.5s ease forwards; /* Animation pour l'apparition */
+  }
+  
+  .navmenu.hidden {
+    animation: slideOut 0.9s ease-in forwards; /* Animation pour la disparition */
+  }
+
+}
+
+@media (max-width: 1000px){
+    .navmenu{
+        align-items: start;
+        justify-content: start;
+        width: 50%;
+    }
+    .navmenu p{
+        font-size: 15px;
+        color: var(--couleur-tertiaire);
+        margin: var(--margin-quatrieme-responsive);
+        padding-left: var(--margin-troisieme-responsive);
+    }
+    .navmenu a{
+        padding-left: var(--margin-troisieme-responsive);
+        margin: var(--margin-quatrieme-responsive);
+        font-size: 15px;
+    }
+    .rectangleToggle {
+        display: flex;
+        position: fixed;
+        height: 54px;
+    }
+    .rectangleToggle .toggleMenu{
+        width: 90px;
+        height: 24px;
+        top: var(--margin-troisieme-responsive);
+        left: var(--margin-prime-responsive);
+    }
+    .rectangleToggle .toggleMenu .toggleConteneur{
+        width: 20px;
+        height: 20px;
+    }
+    #ligneToggle {
+        width: 10px;
+        height: 1px;
+    }
+    #ligneToggle::after,
+    #ligneToggle::before {
+        content: "";
+        width: 10px;
+        height: 1px;
+    }
+    
+    #ligneToggle::after {
+        top: -3px;
+    }
+    
+    #ligneToggle::before {
+        top: 3px;
+    }
+    #menuText{
+        margin-top: 5px;
+        color: var(--couleur-tertiaire);
+        font-family: var(--font-principal);
+        font-size: 20px;
+    }
+}
+/*-------------------------------- Couverture----------------------------- */
 .couverture {
     position: relative;
     display: flex;
@@ -127,22 +367,23 @@ a:hover {
     background-image: url('image0_0Copie.jpg');
     background-size: cover;
     background-position: center;
-    margin-top: 63px;
+    margin-top: 60px;
     width: 101vw;
     height: 586px;
     box-shadow: 3px 3px 3px 3px #28125ac2;
     left: -1vw;
 }
 
-header .couverture .tabCouverture{
+.couverture .tabCouverture{
     display: flex;
     flex-direction: row;
     justify-self: center;
     align-items: center;
+    width: 70%;
 
 
 }
-.modifPhotoProfile img
+.tabCouverture img
 {
     width: 275px;
     height: 275px;
@@ -157,11 +398,57 @@ header .couverture .tabCouverture{
     width: 552px;
     height: 183px;
    margin-left: var(--margin-prime);
+   color: var(--couleur-tertiaire);
+    font-family: var(--font-principal);
 }
 #couleurTitre{
     color: var(--couleur-tertiaire);
     font-family: var(--font-principal);
 }
+/*-------------------------------- Couverture responsive----------------------------- */
+@media (max-width: 1000px) {
+    .couverture {
+        flex-direction: column-reverse;
+        width: 105vw;
+        margin-top: 45px;
+        height: 243px;
+        left: -2vw;
+    }
+
+    .couverture .tabCouverture{
+        display: flex;
+        flex-direction: column-reverse;
+        width: 276px;
+        height: 226px;
+    }
+    .tabCouverture img
+    {   position: relative;
+        width: 100px;
+        height: 100px;
+        border: 5px solid var(--couleur-tertiaire);
+        margin: 0;
+        bottom: -60px;
+    }
+    .tabCouverture h1{
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        margin-bottom: var(--margin-seconde-responsive);
+    }
+    .tabCouverture h1 span{
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .couleurBlancTitre{
+        position: absolute;
+        width: 276px;
+        height: 96px;
+        margin:0;
+        margin-bottom: var(--margin-prime);
+    }
+}
+
 
 
 /* ------------------------------caractéristique global article----------------------------- */
@@ -216,6 +503,7 @@ p{
     height: 40px;
     margin-top: var(--margin-prime);
     margin-bottom: var(--margin-troisieme);
+    cursor: pointer;
 }
 
 .Titre:hover {
@@ -227,11 +515,13 @@ p{
 #tailleIcon1{
     width: var(--taille-icone1-normal);
     height: var(--taille-icone1-normal);
+    cursor: pointer;
 }
 
 #tailleIcon2{
     width: var(--taille-icone2-normal);
     height: var(--taille-icone2-normal);
+    cursor: pointer;
 }
 
 /* sous-titre + icone dans les span */
@@ -239,7 +529,7 @@ p{
     display: flex;
     flex-direction: row;
     align-items: start;
-    
+    cursor: pointer;
 }
 
 /* conteneur avec les box shadow */
@@ -260,11 +550,77 @@ p{
     background-color: var(--couleur-principale);
     border-radius: 50px;
     font-size: 20px;
+    cursor: pointer;
 }
 .btn:hover {
     opacity: 0.7;
 }
+@media (max-width: 1000px){
+    article{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: var(--margin-prime-responsive);
+    }
+    
+    section{
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    /* text global */
+    p{
+        font-size: var(--taille-font-responsive);
+        margin: 0;
+    }
+    
+    #souligne{
+        font-size: 20px;
+        text-decoration-thickness: 3px;
+        text-underline-offset: 4px; 
+    }
+    
+    /* titre + icone global de chaque section */
+    .Titre{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        height: 20px;
+        margin-top: 60px;
+        margin-bottom: var(--margin-troisieme-responsive);
+    }
+    
+    .Titre:hover {
+        opacity: 0.7;
+    }
+    
+    /* icones global */
+    
+    #tailleIcon1{
+        width: var(--taille-icone1-responsive);
+        height: var(--taille-icone1-responsive);
+    }
+    
+    #tailleIcon2{
+        width: var(--taille-icone1-responsive);
+        height: var(--taille-icone1-responsive);
+    }
+    
+    /* btn */
+    .btn {
+        width: 87px;
+        height: 19px;
+        font-size: 10px;
+    }
 
+}
 
 /* -------------------------------section infoPersonnel------------------------------------ */
 
@@ -277,7 +633,6 @@ p{
     justify-content: center;
     
 }
-
 /* contenu */
 .infoPersonnelContenu p{
     display: flex;
@@ -285,6 +640,12 @@ p{
     align-items: center;
     justify-content: center;
 
+}
+@media (max-width: 1000px) {
+    .infoPersonnel{
+        width: 275px;
+        height: 144px;
+    }
 }
 
 /* ------------------------section à propos------------------------------------ */
@@ -318,6 +679,23 @@ p{
     width: 954px;
     height: 96px;
 
+}
+@media (max-width: 1000px){
+    /* conteneur principal à propos*/
+.APropos {
+    width: 215px;
+     height: 200px; 
+}
+#espacementTitre {
+    margin-top: 35px;
+}
+
+/* contenu text à propos*/
+
+.AProposContenu {
+    width: 215px;
+    height: 96px;
+}
 }
 
 /* -------------------------section diplome et formation----------------------------- */
@@ -356,17 +734,53 @@ main .containerDiplomeFormation{
 /* contenu diplome / contenu formation */
 .contenuDiplomeFormation{
     width: 851px;
-    height: 96px;
+    height: 136px;
 }
-
+@media (max-width: 1000px){
+    /* conteneur principal diplome+formation */
+    section .DiplomesFormations{
+        width: 300px;
+        height: 380px;
+        
+    }
+    /* diplome conteneur principal / formation conteneur principal */
+    main .containerDiplomeFormation{
+        width: 300px;
+        height: 132px;
+        margin-bottom: var(--margin-troisieme-responsive);
+    }
+    /* sous titre diplome et compétence */
+    #sousTitreDiplomeFormation{
+        margin-bottom: var(--margin-quatrieme-responsive);
+    }
+    /* conteneur sous-titre et contenu diplome / conteneur sous-titre et contenu formation */
+    .sousTitreContenuDiplomeFormation{
+        width: 273px;
+        height: 102px;
+        margin: var(--margin-troisieme-responsive);
+    }
+    /* contenu diplome / contenu formation */
+    .contenuDiplomeFormation{
+        width: 273px;
+        height: 84px;
+    }
+}
 /* -----------------------------section xp et compétences-------------------------------- */
 /* conteneur principal expérience compétence */
 section .XpCompetence{
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 800px;
     height: 1145px;
     
+}
+@media (max-width: 1000px){
+    section .XpCompetence{
+        width: 302px;
+        height: 902px;
+        
+    }
 }
 
 /* -----------------------------partie expérience-------------------------------- */
@@ -418,6 +832,52 @@ span .experience .conteneurConseillerClient {
     align-items: start;
     margin: var(--margin-troisieme);
 }
+@media (max-width: 1000px){
+    /* conteneur principal expérences */
+    .conteneurPrincipalXp{
+        width: 291px;
+        height: 372px;
+        margin-bottom: var(--margin-troisieme-responsive);
+    }
+
+    /* espacement du texte expérience */
+    span .experience #espacementXp{
+        margin-bottom: var(--margin-troisieme-responsive);
+    }
+
+    /* conteneur conseiller client */
+    span .experience .conteneurConseillerClient {
+        width: 273px;
+        height: 68px;
+        margin-bottom: var(--margin-troisieme-responsive);
+    }
+    /* icon + contenu conseiller client */
+    .iconContenuConseiller{
+        width: 246px;
+        height: 38px;
+        margin: var(--margin-troisieme-responsive);
+    }
+
+    /* conteneur domaine du web */
+    .conteneurDomaineWeb{
+        width: 291px;
+        height: 212px;
+        margin-bottom: var(--margin-troisieme-responsive);
+    }
+
+    /* icon + contenu domaine web */
+    .iconContenuDomaineWeb{
+        width: 261px;
+        height: 182px;
+        margin: var(--margin-troisieme-responsive);
+    }
+    .iconContenuDomaineWeb div #espacementDomaineWeb{
+         height: 30px; 
+    }
+    br{
+        display: none;
+    }
+}
 
 /* -----------------------------partie compétence-------------------------------- */
 
@@ -436,6 +896,17 @@ main .conteneurPrincipalCompétence {
     margin-bottom: var(--margin-troisieme);
 }
 
+@media (max-width: 1000px){
+    main .conteneurPrincipalCompétence {
+        width: 228px;
+        height: 495px;
+        margin-bottom: var(--margin-troisieme-responsive);
+    }
+    #compétence{
+        margin-bottom: var(--margin-troisieme-responsive);
+    }
+}
+
 /* ------------langage de programmation / framework / logiciel / langue------------- */
 
 /* conteneur langage de programmation / framework / logiciel */
@@ -445,6 +916,15 @@ main .conteneurPrincipalCompétence {
     align-items: start;
     width: 800px;
     height: 366px;
+}
+
+@media (max-width: 1000px){
+    span .conteneurCodeFrameworkLogiciel {
+        flex-direction: column;
+        align-items: center;
+        width: 228px;
+        height: 478px;
+    }
 }
 
 /* conteneur langage de programmation / framework / logiciel avec box shadow individuel */
@@ -467,6 +947,26 @@ main .conteneurPrincipalCompétence {
 .containerCode .conteneurTexteIconeTexte{
     margin-top: var(--margin-troisieme);
     margin-left: var(--margin-troisieme);
+}
+@media (max-width: 1000px){
+    .containerCode{
+        width: 227px;
+        height: 97px;
+        margin: 0;
+        margin-bottom: var(--margin-troisieme-responsive);
+    }
+
+    .containerMarginRight{
+        margin-right: 0;
+    }
+    
+    .containerMarginLeft {
+        margin-left: 0;
+    }
+    .containerCode .conteneurTexteIconeTexte{
+        margin-top: var(--margin-troisieme-responsive);
+        margin-left: var(--margin-troisieme-responsive);
+    }
 }
 
 
@@ -506,6 +1006,32 @@ main .conteneurPrincipalCompétence {
 #tailwindCode{
     width: 123px;
 }
+@media (max-width: 1000px){
+    .iconTextCode {
+        height: 42px;
+        margin: var(--margin-quatrieme-responsive);
+    }
+    
+    .iconTextCode #tailleIcon1:hover {
+        width: 30px;
+        height: 30px;
+    }
+    #codeHtml{
+        width: 29px;
+    }
+    #codeJs{
+        width: 50px;
+    }
+    #codeCSS{
+        width: 21px;
+    }
+    #bootstrapCode{
+        width: 47px;
+    }
+    #tailwindCode{
+        width: 62px;
+    }
+}
 
 /* partie langue */
 .contenuLangue{
@@ -523,6 +1049,19 @@ main .conteneurPrincipalCompétence {
     height: 72px;
     margin-top: 10px;
     align-items: center;
+}
+
+@media (max-width: 1000px){
+    .contenuLangue{
+        margin-left: var(--margin-quatrieme-responsive);
+    }
+    
+    #ajustementPositionIconText {
+        width: 168px;
+        height: 30px;
+        margin-top: 10px;
+        align-items: center;
+    }
 }
 
 /* ------------------------------------------section portfolio-------------------------------------- */
@@ -570,6 +1109,60 @@ section .portfolio{
     height: 146px;
     margin-bottom: var(--margin-quatrieme);
 }
+@media (max-width: 1000px){
+    /* conteneur principal portfolio */
+    section .portfolio{
+        width: 406px;
+        height: 585px; 
+    }
+
+    /* conteneur portfolio */
+    .containerPortfolio {
+        width: 125px;
+        height: 190px;
+        margin: var(--margin-troisieme-responsive);
+    }
+
+    /* conteneur des 3 portfolios */
+    .totalPortfolio {
+        flex-wrap: wrap;
+        width: 400px;
+        height: 425px;
+        margin-bottom: var(--margin-troisieme-responsive);
+    }
+
+    /* conteneur image text */
+    .containerPortfolio .conteneurImageTextPorfolio {
+        width: 105px;
+        height: 180px;
+        margin: var(--margin-quatrieme-responsive);
+    }
+
+    /* ajustement image */
+    .conteneurImageTextPorfolio .ajustementImagePortfolio {
+        width: 105px;
+        height: 73px;
+        margin-bottom: var(--margin-quatrieme-responsive);
+    }
+}
+
+@media (max-width:402px){
+    section .portfolio{
+        width: 100%;
+    }
+
+    /* conteneur portfolio */
+    .containerPortfolio {
+        margin: var(--margin-cinquieme-responsive);
+    }
+
+    /* conteneur des 3 portfolios */
+    .totalPortfolio {
+        width: 90%;
+        margin-bottom: var(--margin-cinquieme-responsive);
+    }
+}
+
 
 /* ---------------------------------------------section téléchargement--------------------------------------------- */
 /* conteneur principale */
@@ -589,6 +1182,17 @@ span .TelechargeBtn {
 }
 span .TelechargeBtn p{
     margin-right: var(--margin-prime);
+}
+@media (max-width: 1000px){
+    section .telechargement{
+        width: 217px;
+        height: 153px;
+    }
+    
+    span .TelechargeBtn p{
+        width: 130px;
+        margin-right: var(--margin-prime-responsive);
+    }
 }
 
 /* -------------------------------------------section contact------------------------------------------------------------ */
@@ -676,6 +1280,85 @@ section .contact {
 .conteneurAppelWhatsappInMail .sousTitre p {
     font-size: 30px;
 }
+
+@media (max-width: 900px){
+    /* conteneur principal */
+    section .contact {
+        width: 308px;
+        height: 229px;
+    }
+    /* espacement text contact */
+    .contact p {
+        margin-bottom: var(--margin-troisieme-responsive);
+    }
+    .sousTitre p {
+        margin-top: 5px;
+        margin-left: 2px;
+    }
+
+    /* conteneur appel whatsapp linkedin mail */
+    .conteneurAppelWhatsappInMail {
+        width: 308px;
+        height: 131px;
+    }
+
+    /* conteneur appel linkedin */
+    .conteneurAppelLinkedin {
+        flex-direction: column;
+        height: 50px;
+        margin-bottom: 0;
+        
+    }
+
+    .conteneurAppelLinkedin p{
+        margin: 0;
+    }
+
+    /* conteneur whatsapp mail */
+    .conteneurWhatsappMail {
+        flex-direction: column;
+        height: 50px; 
+    }
+
+
+    /* sous-titre + icone dans les span */
+    .conteneurAppel {
+        width: 134px;
+        height: 24px;
+        margin-right: 0;
+    }
+    .conteneurAppel:hover{
+        height: 30px;
+    }
+    .conteneurLinkedin {
+        width: 260px;
+        height: 20px;
+    }
+    .conteneurLinkedin:hover {
+        height: 30px;
+    }
+
+    .conteneurWhatsapp {
+        width: 169px;
+        height: 20px;
+        margin-right: 0;
+    }
+    .conteneurWhatsapp:hover{
+        height: 30px;
+    }
+    .conteneurMail {
+        width: 308px;
+        height: 20px;
+        margin-left: 0;
+    }
+    .conteneurMail:hover {
+        height: 30px;
+    }
+
+    .conteneurAppelWhatsappInMail .sousTitre p {
+        font-size: 15px;
+    }
+}
 /* -------------------------------------- flèche vers le haut------------------------------------------ */
 .scroll-top {
     position: fixed;
@@ -684,7 +1367,7 @@ section .contact {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    right: 20px;
+    right: 10vw;
     bottom: -15px;
     z-index: 99999;
     color: var(--couleur-principale);
@@ -711,6 +1394,33 @@ section .contact {
     bottom: var(--taille-icone3-normal);
   }
 
+@media (max-width: 1000px){
+    .scroll-top {
+        width: var(--taille-icone3-normal);
+        height: var(--taille-icone3-normal);
+        border-radius: 10px;
+      }
+
+}
+@media (max-width: 500px){
+    .scroll-top {
+        right: 20%;
+      }
+    
+      .scroll-top {
+        width: var(--taille-icone3-responsive);
+        height: var(--taille-icone3-responsive);
+        border-radius: 10px;
+      }
+      .scroll-top p {
+        font-size: var(--taille-icone3-responsive);
+      }
+      .scroll-top.active {
+        bottom: var(--taille-icone3-responsive);
+      }
+
+}
+
 /* -----------------------------------------------footer ------------------------------------------------------- */
 /* conteneur principal footer */
 .footer {
@@ -721,7 +1431,7 @@ section .contact {
     height: 296px;
     width: 100vw;
     background-color: var(--couleur-alternatif);
-    margin-left: -0.5vw;
+    margin-left: -1vw;
 
 }
 /* conteneur copyright icon text */
@@ -744,12 +1454,42 @@ section .contact {
     display: flex;
     flex-direction: row;
 }
+.textFooter p{
+    margin-left: 5px;
+}
 /* conteneur icone */
 .iconFooter #tailleIcon1{
     margin: var(--margin-troisieme);
 }
 .iconFooter #tailleIcon1:hover {
     opacity: 0.5;
+}
+@media (max-width:1000px){
+    /* conteneur principal footer */
+    .footer {
+        height: 202px;
+        width: 105vw;
+    }
+    /* conteneur copyright icon text */
+    .conteneurCopyrightIconText {
+        margin: var(--margin-seconde-responsive);
+        width: 430px;
+        height: 182px;
+    }
+    /* couleur text */
+    .conteneurCopyrightIconText p{
+        font-size: 15px;
+    }
+    .textFooter{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+    }
+    /* conteneur icone */
+    .iconFooter #tailleIcon1{
+        margin: var(--margin-troisieme-responsive);
+    }
 }
 
 /* ----------------------------animation du body lorsque le souris scroll---------------------------- */
