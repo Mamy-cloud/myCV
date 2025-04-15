@@ -235,7 +235,7 @@ a:hover {
         color: var(--couleur-tertiaire);
         cursor: pointer;
         margin: var(--margin-quatrieme);
-        padding-left: var(--margin-troisieme);
+        padding-left: 5vw;
     }
     .navmenu p:hover {
         text-decoration: underline;
@@ -250,7 +250,7 @@ a:hover {
     .navmenu a{
         padding: 5px;
         margin: var(--margin-quatrieme);
-        padding-left: var(--margin-troisieme);
+        padding-left: 5vw;
     }
 
     .rectangleToggle {
